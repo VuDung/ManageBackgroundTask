@@ -51,13 +51,16 @@ public class Task implements Runnable{
 	private TaskAction mAction;
 	
 	private ArrayList<ITaskListenter> mArrListenter;
-	private Map<String, Object> mParams;
-	private String mActionUri;
+	
+	private Map<String, Object> mParams;//Map params input to ActionUri
+	
+	private String mActionUri;//action task attack to HOST URL
 	
 	private boolean isIncludeHost;
 	private boolean isConnecting;
 	private boolean isGet;
 	private boolean isBitmap;
+	
 	private HttpClient mHttpClient;
 	
 	private Thread mThread;
@@ -80,6 +83,9 @@ public class Task implements Runnable{
 		
 	};
 	
+	/*
+	 * Constructor
+	 */
 	public Task(ITaskListenter... listenters) {
 		mAction = TaskAction.ActionNone;
 		mArrListenter = new ArrayList<ITaskListenter>();
@@ -95,9 +101,12 @@ public class Task implements Runnable{
 		mTask = this;
 	}
 	
-	public void loginTask(TaskAction action, String taskType, Map<String, Object> params){
+	/*
+	 * Call task type
+	 */
+	public void loginTask(TaskAction action, String taskType, Map<String, Object> params, boolean isGet){
 		mAction = action;
-		request(taskType, params, true, true);
+		request(taskType, params, true, isGet);
 	}
 	
 	public boolean isConnecting(){
@@ -132,6 +141,9 @@ public class Task implements Runnable{
 		return true;
 	}
 	
+	/*
+	 * Pull error result
+	 */
 	private void processError(ResultCode errorCode){
 		Message msg = mHandler.obtainMessage(0, new TaskResponse(mAction, errorCode, null));
 		mHandler.sendMessage(msg);
@@ -183,6 +195,10 @@ public class Task implements Runnable{
 		mHandler.sendMessage(msg);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	@Override
 	public void run() {
 		Log.d(mAction.toString(), " RUN " + mActionUri);
@@ -232,9 +248,11 @@ public class Task implements Runnable{
 				}
 				if(isBitmap){
 					Bitmap bm = BitmapFactory.decodeStream(in);
+					
+					in.close();
 					dispatchResult(bm);
 				}else{
-					String temp = convertStreamToString(in);
+					String temp = convertStreamToString(in); // convert stream to string
 					Log.d(mAction.toString(), " = " + temp);
 					
 					in.close();
@@ -265,6 +283,9 @@ public class Task implements Runnable{
 		isConnecting = false;
 	}
 	
+	/*
+	 * put params to URL string => Uri => set Uri to Request
+	 */
 	private void attachUriWithQuery(HttpRequestBase request, Uri uri, Map<String, Object> params){
 		try {
 			if(params == null){

@@ -1,0 +1,17 @@
+<RelativeLayout
+    android:layout_width="match_parent" 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent">
+    <ProgressBar 
+        android:id="@+id/pbLoadVideo"
+    	android:progressDrawable="@drawable/custom_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+    <com.costum.android.widget.LoadMoreListView
+        android:id="@+id/lvVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/background_dark"/>
+    
+</RelativeLayout>

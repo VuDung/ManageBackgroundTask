@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="orange">#FFA500</color>
+    <color name="blue">#0000FF</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue_berry">#0041C2</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="platinum">#E5E4E2</color>
+    <color name="schoolBusYellow">#E8A317</color>
+    <color name="battleship_gray">#848482</color>
+    <color name="transparent">#66FF0000</color>
+    <color name="actionbar_separator">#8B1A1A</color>
+    <color name="actionbar_title">#FFFFFF</color>
+    <color name="actionbar_background_start">#BF9405</color>
+    <color name="actionbar_background_end">#FCC205</color>
+    <color name="actionbar_background_item_pressed_start">#FF7F00</color>
+    <color name="actionbar_background_item_pressed_end">#EE7600</color>
+    <color name="background_loginhome_start">#e8ebe2</color>
+    <color name="background_loginhome_end">#d4fb7c</color>
+</resources>

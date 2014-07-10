@@ -6,5 +6,6 @@ public enum TaskAction {
 	ActionLogout,
 	ActionGetPlace,
 	ActionGetBanner,
-	ActionUpload
+	ActionUpload,
+	ActionGetVideo
 }
